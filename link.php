@@ -21,7 +21,7 @@ $linkcats = $wpdb->get_results("SELECT T1.name AS name FROM $wpdb->terms T1, $wp
       <ul>
         <?php $bookmarks = get_bookmarks('orderby=date&category_name=' . $linkcat->name);if ( !empty($bookmarks) ) {foreach ($bookmarks as $bookmark) {echo '<li><a href="' . $bookmark->link_url . '" title="' . $bookmark->link_description . '" target="_blank" >' . $bookmark->link_name . '</a><div>' . $bookmark->link_description . '</div></li>';}} ?>
       </ul>
-      <div class="fix"></div>
+      
     </div>
     <!-- end link-content -->
     <?php endforeach; endif; ?>

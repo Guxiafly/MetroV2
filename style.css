@@ -1219,35 +1219,42 @@ height: 7rem;
     height: 1.714285714285714rem;
     width: 190px;
     width: 13.57142857142857rem;
+    border: 1px solid rgb(0, 164, 239);
 }
 
 #searchform input[type="text"]{
      position: absolute;
-     display: inline-block;
-     border: 1px solid rgb(0, 164, 239);
+     display: block;
+     border: 0px solid rgb(0, 164, 239);
      border-right: 0px;
-     height: 20px;
+     height: 22px;
      height: 1.428571428571429rem;
+     line-height: 24px;
      width: 166px;
      width: 11.85714285714286rem;
      outline: medium none;
+     padding:0;
+     margin: 0px;
 }
 
 #searchform input[type="submit"] {
     position: absolute;
     height: 24px;
     height: 1.714285714285714rem;
-    width: 24px;
-    width: 1.714285714285714rem;
+    line-height: 24px;
+    width: 25px;
+    width: 1.785714285714286rem;
     display: inline-block;
     background-image: url("images/CSS.png");
     background-repeat: no-repeat; 
     background-position:-170px 0px;
-    border: 1px solid rgb(0, 164, 239);
+    border: 0px solid rgb(0, 164, 239);
     border-left: 0px;
     background-color: #FFF;
     left: 166px;
     left: 11.85714285714286rem;
+    padding:0;
+    margin: 0px;
 }
 #searchform input[type="submit"]:hover {
     background-color: rgb(0, 164, 239);
@@ -1260,7 +1267,7 @@ height: 7rem;
 } 
 
 #searchform input:focus{
-    box-shadow: 0px 0px 8px rgba(0,164,239,0.6);
+    /*box-shadow: 0px 0px 8px rgba(0,164,239,0.6);*/
 }
 
 /* Buttons */
@@ -1270,7 +1277,7 @@ input[type="reset"],
 article.post-password-required input[type=submit],
 li.bypostauthor cite span {
     line-height: 20px;
-	line-height: 1.1.428571428571429rem;
+	line-height: 1.428571428571429rem;
 	font-weight: normal;
 	color: #7c7c7c;
 	background-color: #e6e6e6;
