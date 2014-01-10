@@ -4,7 +4,7 @@
  *
  * The area of the page that contains both current comments
  * and the comment form. The actual display of comments is
- * handled by a callback to hellometro_comment() which is
+ * handled by a callback to metrostyle_comment() which is
  * located in the functions.php file.
  *
  * @package WordPress
@@ -31,7 +31,7 @@ if ( post_password_required() )
 		</h2>
 
 		<ol class="commentlist">
-			<?php wp_list_comments( array( 'callback' => 'hellometro_comment', 'style' => 'ol' ) ); ?>
+			<?php wp_list_comments( array( 'callback' => 'metrostyle_comment', 'style' => 'ol' ) ); ?>
 		</ol><!-- .commentlist -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>

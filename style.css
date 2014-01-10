@@ -586,6 +586,11 @@ form[method=post] input {
     padding-bottom: 1rem;
 }
 
+.tab_post_statistics li{
+    padding:2px 0px;
+    margin:2px 0px;
+}
+
 .widget_comments li img {
     float: left;
     margin-top: 10px;
@@ -1204,6 +1209,23 @@ height: 7rem;
     margin: 0.5rem 0rem;
 }
 
+#footerNavgate a.addone_sina,
+#footerNavgate a.addone_tengxun{
+    background:#f74e1e;
+    color:#FFF;
+    padding:0px 7px;
+}
+#footerNavgate a.addone_tengxun{
+    background:#00a4ef;
+}
+#footerNavgate a.addone_sina:hover,
+#footerNavgate a.addone_tengxun:hover{
+    background:rgb(117, 117, 117);
+    text-decoration:none;
+    cursor: pointer;
+}
+
+
 /* Search */
 #search {
     float: right;
@@ -1268,6 +1290,68 @@ height: 7rem;
 
 #searchform input:focus{
     /*box-shadow: 0px 0px 8px rgba(0,164,239,0.6);*/
+}
+
+/* Error 404 */
+#error404{
+    text-align:center;
+}
+
+#error404 span{
+    padding:2rem 1rem;
+    display:inline-block;
+    margin:5px;
+    font-size:5rem;
+    color:#FFF;
+}
+
+#error404 span:nth-child(1) 
+{
+    background:#ffb900;
+}
+
+#error404 span:nth-child(2) 
+{
+    background:#f74e1e;
+}
+
+#error404 span:nth-child(3) 
+{
+    background:#7fba00;
+}
+
+#error404 h2{
+    margin-top:2rem;
+    font-size:1.28571rem;
+    color:#00a4ef;
+    /*font-weight:normal;*/
+}
+
+#error404 a.errorTitle{
+    margin:3rem 0rem 2rem 2rem;
+    font-size:1rem;
+    padding:0.5rem 1rem;
+    color:#FFF;
+    font-weight:normal;
+    background:#00a4ef;
+    display:inline-block;
+}
+
+#error404 a.errorTitle:hover{
+    background:rgba(0,164,239,0.6);
+}
+
+#error404 a.errorTitle:first-child{
+    margin-left:0px;
+}
+
+
+#error404 div.header-meta{
+    float:none;
+    margin:0px auto;
+    padding:0px;
+    width:190px;
+    background:#FFF;
 }
 
 /* Buttons */
@@ -1418,6 +1502,10 @@ div.linkcaption h3 {
     .left-menu {
         float: left;
         width: 70%;
+    }
+
+    .mobile-menu{
+        display:none;
     }
 
     .main-navigation div.nav-menu, .main-navigation ul.nav-menu, .main-navigation div.nav-menu > ul {
@@ -1728,8 +1816,10 @@ div.linkcaption h3 {
     bottom:64px;
     cursor:pointer;
 }
-#share a#totop:hover{    background-position:-30px -120px;
-}/*GuestBook*/
+#share a#totop:hover{
+    background-position:-30px -120px;
+}
+/*GuestBook*/
 .readers-list{line-height:18px;text-align:left;overflow:hidden;_zoom:1;margin-bottom: 30px;}
 .readers-list li{width:160px;float:left;*margin-right:-1px}
 .readers-list a,.readers-list a:hover strong{
@@ -1874,6 +1964,9 @@ div.linkcaption h3 {
         }
 
 @media (max-width: 643px) {
+    .site {
+        margin-top:0px;
+    }
     .main-navigation li a {
         font-size: 16px;
         padding: 0;
@@ -1919,16 +2012,53 @@ div.linkcaption h3 {
 
     .left-menu {
         display: none;
-        float: left;
+        /*float: left;*/
         margin-top: 28px;
-        position: absolute;
+        /*position: absolute;*/
         background: #777;
         padding: 7px;
         background: #ededed;
         border-left: 1px solid #eeeeee;
         border-right: 1px solid #eeeeee;
         border-bottom: 1px solid #eeeeee;
-        z-index:9999;
+        /*z-index:9999;*/
+    }
+
+    .mobile-menu {
+        float:left;
+        width:80%;
+        display:none;
+        position:absolute;
+        color:#FFF;
+    }
+
+    .mobile-menu li {
+       background:rgb(213, 239, 251);
+       color:rgba(0,164,239,1);
+    }
+
+    .mobile-menu li a{
+       background:rgb(213, 239, 251);
+       color:rgba(0,164,239,1);
+       font-size:16px;
+       padding:5px 20px;
+    }
+
+    .mobile-menu li a:hover{
+        text-decoration:none;
+        color:#FFF;
+        background:rgba(0,164,239,1);
+    }
+
+    .mobile-menu .current-menu-item a{
+        text-decoration:none;
+        color:#FFF;
+        background:rgba(0,164,239,0.8);
+    }
+
+    .mobile-menu li:hover{
+        background:rgba(0,164,239,1);
+        color:#FFF;
     }
 
 .main-navigation li{
@@ -1957,20 +2087,19 @@ div.linkcaption h3 {
 
         .nav-menu li li {
                 float: left;
-                display: block;
+                display: none;
                 margin-right: 12px;
         }
             .nav-menu li a {
-            color: #000;
+            color: #00a4ef;
             font-weight: normal;
-            display: inline-block;
-            border-bottom:1px dashed #666666;
+            display: block;
             line-height:26px; 
-            padding: 2px;   
+            width: 100%;   
         }
 
             .nav-menu li li a {
-             color: #666666;
+             color: #00a4ef;
              font-weight: normal;
              border-bottom:0px;
              font-size: 12px;
@@ -1999,6 +2128,9 @@ div.linkcaption h3 {
             width: 80%;   
         }
         }
+#share{
+    display:none;
+}
 
         /* Mobile devices */
 @media (max-width: 360px) {

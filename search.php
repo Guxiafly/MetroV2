@@ -16,7 +16,7 @@
                 <div class="clear"></div>
 				<section class="entry-content">
 					   <a class="entry-content-image" href="<?php the_permalink() ?>" rel="bookmark" target="_blank" title="<?php the_title(); ?>">
-                         <?php $thumb_img = has_post_thumbnail() ? get_the_post_thumbnail( $post->ID, 'thumbnail', array('alt' => trim(strip_tags( $post->post_title )),'title'=> trim(strip_tags( $post->post_title ))) ) : hellometro_get_post_img(380, 232, TRUE);?>   
+                         <?php $thumb_img = has_post_thumbnail() ? get_the_post_thumbnail( $post->ID, 'thumbnail', array('alt' => trim(strip_tags( $post->post_title )),'title'=> trim(strip_tags( $post->post_title ))) ) : metrostyle_get_post_img(380, 232, TRUE);?>   
                          <?php echo $thumb_img;?> 
                        </a>
                        <?php echo mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 320,"……"); ?>
@@ -24,7 +24,7 @@
                 </section>
 				<footer class="entry-meta">
 					<span class="entry-tags"><?php echo get_the_tag_list( '', '  ');?></span>
-				    <span class="entry-views"><span class="views-sum"><?php hellometro_post_views('', '')?>人已围观</span><span class="add-views"><a href="<?php the_permalink() ?>" target="_blank" title="围观+1" rel="bookmark">+</a></span></span>
+				    <span class="entry-views"><span class="views-sum"><?php metrostyle_post_views('', '')?>人已围观</span><span class="add-views"><a href="<?php the_permalink() ?>" target="_blank" title="围观+1" rel="bookmark">+</a></span></span>
                     <div class="clear"></div>
                 </footer>
                 <div class="entry-border"></div>
@@ -32,7 +32,7 @@
 
 					<?php endwhile; ?>
 			<nav class="post_nav">
-				<?php hellometro_posts_nav_link($query_string); ?>
+				<?php metrostyle_posts_nav_link($query_string); ?>
 			</nav>
 
 			<?php else : ?>

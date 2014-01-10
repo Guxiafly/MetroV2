@@ -12,7 +12,7 @@
 
 				</section>
 				<footer>
-                    <?php hellometro_single_link_pages() ?>	
+                    <?php metrostyle_single_link_pages() ?>	
 				</footer>
 			</article>
 				<?php comments_template( '', true ); ?>

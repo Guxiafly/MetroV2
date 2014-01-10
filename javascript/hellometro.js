@@ -36,22 +36,71 @@ jQuery(document).ready(function(){
 	
 }); 
 
-jQuery(document).ready(function ()
-{
-     jQuery('.menu-toggle').hover(function () {
-        jQuery('.left-menu').stop(true, true).fadeIn(0);
-    }, function () {
-        jQuery('.left-menu').hover(function (){
-            jQuery('.left-menu').stop(true, true).fadeIn(0);
-        }, function(){
-            jQuery('.left-menu').fadeOut(500, function () {
-            jQuery('.left-menu').css("display", "none");
+jQuery(document).ready(function () {
+    jQuery(".singleContent img").click(function () {
+        var background = jQuery("<div/>"); 
+        jQuery(background).attr("id", "overlayBackground")
+                     .css({
+                         "display": "none",
+                         "position": "absolute",
+                         "left": 0,
+                         "top": 0,
+                         "backgroundColor": "#000",
+                         "opacity": "0.6",
+                         "width": jQuery(document).width(),
+                         "height": jQuery(document).height(),
+                         "zIndex": 10000
+                     });
+        jQuery("body").append(background);
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var newImage = jQuery('<img/>'); 
+        jQuery(newImage).attr("src", jQuery(this).attr("src"))
+                   .attr("id", "largeImage")
+                   .css({
+                       "position": "absolute",
+                       "padding": "5",
+                       "backgroundColor": "#FFF",
+                   });
+        var newDiv = jQuery("<div></div>");
+        jQuery(newDiv).css({
+            "display": "none",
+            "position": "absolute",
+            "width": "600",
+            "height": "600",
+            "overflow": "auto",
+            "top": (windowHeight - jQuery(this).height()) / 2 + jQuery(document).scrollTop(),
+            "left": (windowWidth - jQuery(this).width()) / 2,
+            "zIndex": 100001
+            });
+        jQuery("body").append(newDiv);
+        jQuery(newDiv).append(newImage);
+        jQuery(background).fadeIn(400, function () {
+            jQuery(newDiv).fadeIn(500);
+            jQuery(newImage).bind("click", function () {
+                jQuery(this).fadeOut(1000);
+                jQuery(background).fadeOut(1000, function () {
+                    jQuery(this).remove();
+                });
+            });
         });
-        });
+        return false;
+    });
+});
 
-        jQuery('.left-menu').fadeOut(500, function () {
-            jQuery('.left-menu').css("display", "none");
-        });
+jQuery(document).ready(function () {
+    jQuery('.menu-toggle').click(function () {
+        if (jQuery('.mobile-menu').css("display") == "none") {
+            jQuery('.mobile-menu').css("display", "block");
+            jQuery('#page').animate({ "left": "230" }, 300);
+            jQuery('.menu-toggle').text("返回");
+        }
+        else {
+            jQuery('.mobile-menu').css("display", "none");
+            jQuery('#page').animate({ "left": "0" }, 300);
+            jQuery('.menu-toggle').text("菜单");
+        }
+
     });
 });
 
@@ -174,7 +223,9 @@ jQuery(document).ready(function () {
     }
     clearInt();
     setInt();
-})jQuery(document).ready(function (b) {
+})
+
+jQuery(document).ready(function (b) {
 	jQuery(".header-meta a").each(function() {
 		if (this.title) {
 			var c = this.title;
@@ -199,4 +250,6 @@ jQuery(document).ready(function () {
 			})
 		}
 	})
-});
+});
+
+

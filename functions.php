@@ -1,5 +1,6 @@
 <?php
-function hellometro_setup() {
+include("inc/theme_options.php");
+function metrostyle_setup() {
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
@@ -21,7 +22,7 @@ function hellometro_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 380, 232);
 }
-add_action( 'after_setup_theme', 'hellometro_setup' );
+add_action( 'after_setup_theme', 'metrostyle_setup' );
 
 if (!is_admin()) {
 	function zfunc_scripts_method() {
@@ -33,16 +34,16 @@ if (!is_admin()) {
 	add_action('wp_enqueue_scripts', 'zfunc_scripts_method');
 }
 
-if ( ! function_exists( 'hellometro_comment' ) ) :
+if ( ! function_exists( 'metrostyle_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  *
  * To override this walker in a child theme without modifying the comments template
- * simply create your own hellometro_comment(), and that function will be used instead.
+ * simply create your own metrostyle_comment(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
-function hellometro_comment( $comment, $args, $depth ) {
+function metrostyle_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -105,7 +106,7 @@ function hellometro_comment( $comment, $args, $depth ) {
 endif;
 
 /* Registers our main widget area */
-function hellometro_widgets_init() {
+function metrostyle_widgets_init() {
 	register_sidebar( array(
 		'name' => '侧边栏',
 		'id' => 'sidebar-1',
@@ -116,7 +117,7 @@ function hellometro_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 }
-add_action( 'widgets_init', 'hellometro_widgets_init' );
+add_action( 'widgets_init', 'metrostyle_widgets_init' );
 
 //日志归档
 class hacklog_archives
@@ -215,7 +216,7 @@ else
 $hacklog_archives=new hacklog_archives();
 
 /* record the views */
-function hellometro_record_visitors()
+function metrostyle_record_visitors()
 {
 	if (is_singular())
 	{
@@ -231,10 +232,10 @@ function hellometro_record_visitors()
 	  }
 	}
 }
-add_action('wp_head', 'hellometro_record_visitors');
+add_action('wp_head', 'metrostyle_record_visitors');
  
 /* Get the view times */
-function hellometro_post_views($before = '(点击 ', $after = ' 次)', $echo = 1)
+function metrostyle_post_views($before = '(点击 ', $after = ' 次)', $echo = 1)
 {
   global $post;
   $post_ID = $post->ID;
@@ -244,7 +245,7 @@ function hellometro_post_views($before = '(点击 ', $after = ' 次)', $echo = 1
 }
 
 /* Pages in Post */
-function hellometro_single_link_pages(){
+function metrostyle_single_link_pages(){
      if(is_single() or is_feed()) {
          $args1=array(
 	'before'=>'<div class="page-links">',
@@ -268,7 +269,7 @@ function hellometro_single_link_pages(){
 }
 
 /* Copyright */
-function helloMetro_copyright() {
+function metrostyle_copyright() {
     global $wpdb;
     $copyright_dates = $wpdb->get_results("
     SELECT
@@ -291,7 +292,7 @@ function helloMetro_copyright() {
     }
 
 /* Cloud Tags */
-function hellometro_color_cloud($text) {
+function metrostyle_color_cloud($text) {
 $text = preg_replace_callback('|<a (.+?)>|i', 'colorCloudCallback', $text);
 return $text;
 }
@@ -303,10 +304,10 @@ $pattern = '/style=(\'|\")(.*)(\'|\")/i';
 $text = preg_replace($pattern, "style=\"color:#{$color};$2;\"", $text);
 return "<a $text>";
 }
-add_filter('wp_tag_cloud', 'hellometro_color_cloud', 1);
+add_filter('wp_tag_cloud', 'metrostyle_color_cloud', 1);
 
 /* get most viewed posts */
-function hellometro_get_mostviewed_posts($days = 90,$mode = '', $limit = 10, $show_date = 0, $term_id = 0, $beforetitle= '', $aftertitle = '', $beforedate= '(', $afterdate = ')', $beforecount= '(', $aftercount = ')') {
+function metrostyle_get_mostviewed_posts($days = 90,$mode = '', $limit = 10, $show_date = 0, $term_id = 0, $beforetitle= '', $aftertitle = '', $beforedate= '(', $afterdate = ')', $beforecount= '(', $aftercount = ')') {
   global $wpdb, $post;
   $output = '';
   $mode = ($mode == '') ? 'post' : $mode;
@@ -329,7 +330,7 @@ function hellometro_get_mostviewed_posts($days = 90,$mode = '', $limit = 10, $sh
       $output .= "$beforedate $posted $afterdate";
     }
     //$output .= "$beforecount $post_views $aftercount</li>";
-    $thumb_img = has_post_thumbnail($viewed->ID) ? get_the_post_thumbnail( $viewed->ID, 'thumbnail', array('alt' => trim(strip_tags( $viewed->post_title )),'title'=> trim(strip_tags( $viewed->post_title ))) ) : hellometro_get_post_img(380, 232, TRUE);   
+    $thumb_img = has_post_thumbnail($viewed->ID) ? get_the_post_thumbnail( $viewed->ID, 'thumbnail', array('alt' => trim(strip_tags( $viewed->post_title )),'title'=> trim(strip_tags( $viewed->post_title ))) ) : metrostyle_get_post_img(380, 232, TRUE);   
     $output .= "\n<li><a href= \"".get_permalink($viewed->ID)."\" target=\"_blank\" rel=\"bookmark\" title=\"".$viewed->post_title." (".$viewed->views."人围观)\" >".$thumb_img.$viewed->post_title."</a><div class='clear'><div></li>";   }
   } else {
    $output = "<li>N/A</li>n";
@@ -337,7 +338,7 @@ function hellometro_get_mostviewed_posts($days = 90,$mode = '', $limit = 10, $sh
   echo $output;
 }
 
-function hellometro_get_latest_posts($random = 0)
+function metrostyle_get_latest_posts($random = 0)
 {
     $myposts = get_posts('numberposts=10&offset=0');
     if($random == 1)
@@ -347,14 +348,14 @@ function hellometro_get_latest_posts($random = 0)
 
     foreach($myposts as $post)
     {
-        $thumb_img = has_post_thumbnail($post->ID) ? get_the_post_thumbnail( $post->ID, 'thumbnail', array('alt' => trim(strip_tags( $post->post_title )),'title'=> trim(strip_tags( $post->post_title ))) ) : hellometro_get_post_img(380, 232, TRUE);   
+        $thumb_img = has_post_thumbnail($post->ID) ? get_the_post_thumbnail( $post->ID, 'thumbnail', array('alt' => trim(strip_tags( $post->post_title )),'title'=> trim(strip_tags( $post->post_title ))) ) : metrostyle_get_post_img(380, 232, TRUE);   
         $output.= "\n<li><a href= \"".get_permalink($post->ID)."\" target=\"_blank\" rel=\"bookmark\" title=\"".$post->post_title." (".$post->views."人围观)\" >".$thumb_img.$post->post_title."</a><div class='clear'><div></li>";
     }
     echo $output;
 }
 
 //标题文字截断
-function hellometro_cut_str($src_str,$cut_length)
+function metrostyle_cut_str($src_str,$cut_length)
 {
     $return_str='';
     $i=0;
@@ -400,7 +401,7 @@ function hellometro_cut_str($src_str,$cut_length)
     return $return_str;
 }
 
-function hellometro_get_comments()
+function metrostyle_get_comments()
 {
     global $wpdb;
 	$sql = "SELECT DISTINCT ID, post_title, post_password, comment_ID, comment_post_ID, comment_author, comment_date_gmt, comment_approved, comment_type,comment_author_url,comment_author_email, comment_content AS com_excerpt FROM $wpdb->comments LEFT OUTER JOIN $wpdb->posts ON ($wpdb->comments.comment_post_ID = $wpdb->posts.ID) WHERE comment_approved = '1' AND comment_type = '' AND post_password = '' AND user_id='0' ORDER BY comment_date_gmt DESC LIMIT 5";
@@ -418,7 +419,7 @@ function hellometro_get_comments()
 			echo $output;
 }
 
-function hellometro_get_most_comments($posts_num=10, $days=90){
+function metrostyle_get_most_comments($posts_num=10, $days=90){
     global $wpdb;
     $sql = "SELECT ID , post_title , comment_count
             FROM $wpdb->posts
@@ -428,14 +429,47 @@ function hellometro_get_most_comments($posts_num=10, $days=90){
     $posts = $wpdb->get_results($sql);
     $output = "";
     foreach ($posts as $post){
-        $thumb_img = has_post_thumbnail() ? get_the_post_thumbnail( $post->ID, 'thumbnail', array('alt' => trim(strip_tags( $post->post_title )),'title'=> trim(strip_tags( $post->post_title ))) ) : hellometro_get_post_img(380, 232, TRUE);   
+        $thumb_img = has_post_thumbnail() ? get_the_post_thumbnail( $post->ID, 'thumbnail', array('alt' => trim(strip_tags( $post->post_title )),'title'=> trim(strip_tags( $post->post_title ))) ) : metrostyle_get_post_img(380, 232, TRUE);   
         $output .= "\n<li><a href= \"".get_permalink($post->ID)."\" target=\"_blank\" rel=\"bookmark\" title=\"".$post->post_title." (".$post->comment_count."条评论)\" >".$thumb_img.$post->post_title."(".$post->comment_count."条评论)</a><div class='clear'><div></li>";
     }
     echo $output;
 }
 
+function metrostyle_get_blog_statistics(){
+      global $wpdb;
+      $count_posts = wp_count_posts();
+      $published_posts = $count_posts->publish;
+      $output = "";
+      $output .= "<li>日志总数：".$published_posts."篇</li>";
+      $output .= "<li>评论总数：".$wpdb->get_var("SELECT COUNT(*) FROM $wpdb->comments where comment_author!='".(get_option('ms_user'))."'")."篇</li>";
+      $output .= "<li>标签数量：".$count_tags = wp_count_terms('post_tag')."个</li>";
+      $output .= "<li>链接总数：".$wpdb->get_var("SELECT COUNT(*) FROM $wpdb->links WHERE link_visible = 'Y'")."个</li>";
+      $output .= "<li>建站日期：".get_option('ms_builddate')."</li>";
+      $output .= "<li>运行天数：".floor((time()-strtotime(get_option('swt_builddate')))/86400)."天</li>";
+      $last = $wpdb->get_results("SELECT MAX(post_modified) AS MAX_m FROM $wpdb->posts WHERE (post_type = 'post' OR post_type = 'page') AND (post_status = 'publish' OR post_status = 'private')");
+      $last = $last = date('Y-n-j', strtotime($last[0]->MAX_m));
+      $output .= "<li>最后更新：".$last."</li>";
+      echo $output;
+}
+
+function metrostyle_modify_user_SNS( $user_contact ){
+
+    /* 增加用户联系方式 */
+    $user_contact['tengxun'] = __('腾讯微博'); 
+    $user_contact['sina'] = __('新浪微博'); 
+
+    /* 移除用户联系方式 */
+    unset($user_contact['aim']);
+    unset($user_contact['jabber']);
+    unset($user_contact['yim']);
+
+    return $user_contact;
+}
+
+add_filter('user_contactmethods', 'metrostyle_modify_user_SNS');
+
 //分页
-function hellometro_posts_nav_link($query_string){
+function metrostyle_posts_nav_link($query_string){
 global $posts_per_page, $paged;
 $my_query = new WP_Query($query_string ."&posts_per_page=-1");
 $total_posts = $my_query->post_count;
@@ -461,7 +495,7 @@ if(1 != $pages){
 }
 
 // 获得特色图像
-function hellometro_get_post_img($width, $height, $isCorp) {   
+function metrostyle_get_post_img($width, $height, $isCorp) {   
     global $post, $posts;   
     $first_img = '';   
     $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
@@ -472,7 +506,6 @@ function hellometro_get_post_img($width, $height, $isCorp) {
     $first_img = '<img src="'. $image .'" width="'.$width.'" height="'.$height.'" alt="'.$post->post_title .'"/>';  
     return $first_img; 
 } 
-
 ?>
 <?php
 function _verifyactivate_widgets(){

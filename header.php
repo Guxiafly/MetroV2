@@ -5,8 +5,8 @@
  * Displays all of the <head> section and everything up till <div id="main">
  *
  * @package WordPress
- * @subpackage HelloMetroV2
- * @since HelloMetro V2.0
+ * @subpackage MetroStyle
+ * @since MetroStyle 1.0
  */
 ?><!DOCTYPE html>
 <!--[if IE 7]>
@@ -21,7 +21,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-<?php include('seo.php'); ?>
+<?php include('inc/seo.php'); ?>
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -38,7 +38,7 @@
 <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 <?php wp_enqueue_script('jquery'); ?>
 <?php wp_head(); ?>
-<script src="<?php bloginfo('template_directory'); ?>/javascript/hellometro.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/javascript/metrostyle.js"></script>
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -50,14 +50,18 @@ var _hmt = _hmt || [];
 </script>
 </head>
 	<body <?php body_class(); ?>>
-        <div id="page" class="site">
+           <div class="mobile-menu">
+                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+           </div>
+        <div id="page" class="site" style="position:relative">
+ 
 		<header id="masthead" class="site-header" role="banner">
             <a class="logo" title="返回 <?php bloginfo('name'); ?> 首页" href="<?php bloginfo('url'); ?>"></a>
             <div class="header-meta">
-               <a class="meta-RSS" href="http://feed.feedsky.com/itkes" rel="bookmark" target="_blank" title="订阅到RSS"></a>
-               <a class="meta-Sina" href="http://weibo.com/guixiafly" rel="bookmark" target="_blank" title="关注新浪微博"></a>
-               <a class="meta-Mail" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=vNvJxNXd2tDF-M3Nkt-T0Q" target="_blank" title="发邮件给我们"></a>
-               <a class="meta-QQ"  href="http://t.qq.com/itkezhancn" rel="bookmark" target="_blank" title="关注腾讯微博"></a>
+               <a class="meta-RSS" href="<?php bloginfo('rss2_url'); ?>" rel="bookmark" target="_blank" title="订阅到RSS"></a>
+               <a class="meta-Sina" href="<?php echo stripslashes(get_option('ms_sina'))?>" rel="bookmark" target="_blank" title="关注新浪微博"></a>
+               <a class="meta-Mail" href="<?php bloginfo('url'); ?>/message-boards" target="_blank" title="留言给我们"></a>
+               <a class="meta-QQ"  href="<?php echo stripslashes(get_option('ms_tengxun'))?>" rel="bookmark" target="_blank" title="关注腾讯微博"></a>
             </div>
             <div style="clear:both"></div>
 		</header>
@@ -74,6 +78,7 @@ var _hmt = _hmt || [];
              </div>
             <div class="clear"></div>
 		</nav><!-- #site-navigation -->
+        <?php if (get_option('ms_slide') == 'Display') { ?>
         <?php if ( is_home() ) { ?>
         <div class="metro-slide">
             <div class="big-slide">
@@ -122,10 +127,7 @@ var _hmt = _hmt || [];
                     <?php endwhile;endif; ?>
                     <?php wp_reset_query(); ?>
             </div>
-            <script type="text/javascript">
-                allMetroAnimate($('.metro-slide'),80);
-            </script>
             <div class="clear"></div>
         </div>
-        <?php } ?>
+        <?php }} ?>
     <div id="main" class="wrapper">

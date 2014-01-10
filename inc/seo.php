@@ -39,5 +39,6 @@ if ( is_single() ){
 <meta name="keywords" content="<?php echo rtrim($keywords,','); ?>" />
 <?php } ?>
 <?php if ( is_home() ) { ?>
-<meta name="description" content="<?php bloginfo('description'); ?>" />
+<meta name="description" content="<?php echo get_option('ms_description'); ?>" />
+<meta name="keywords" content="<?php echo get_option('ms_keywords'); ?>" />
 <?php } ?>
