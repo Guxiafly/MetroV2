@@ -27,10 +27,7 @@ $options = array (
 	array(  "name" => $themename." Options",
       		"type" => "title"),
 
-
-
 //各功能模块控制
-    array(  "type" => "close"),
     array(  "name" => "首页幻灯片设置",
             "type" => "section"),
     array(  "type" => "open"),
@@ -209,52 +206,12 @@ $i=0;
 if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' 主题设置已保存</strong></p></div>';
 if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' 主题已重新设置</strong></p></div>';
 ?>
-<!--<script type="text/javascript" src="http://sharepic.googlecode.com/files/weisaysimple_latest_version.js"></script>-->
-<!--<script type="text/javascript">
-var _version = '<?php $theme_data = get_theme_data(dirname(__FILE__) . '/../style.css');echo $theme_data['Version'];?>';
-jQuery(document).ready(function(){
-	jQuery("span.version_number").text(weisaytheme_latest_version);
-	jQuery("a.downloand_add").attr("href",downloand_add);
-	jQuery("a.author_add").attr("href",author_add);
-	if(_version < weisaytheme_latest_version ){
-		jQuery(".version_tips").fadeIn(1000);
-	}
-	else {
-		jQuery(".version_tips").hide();
-	};
-	jQuery(".close_version_tips").click(function(){
-		jQuery(this).parent().fadeOut(1000);
-	});
-	jQuery(".fl_cbradio_op:checked").each(function() {
-		jQuery(this).parent().parent().children().eq(3).show();
-	});
-	jQuery(".fl_cbradio_cl:checked").each(function() {
-		jQuery(this).parent().parent().children().eq(3).hide();
-	});
-	jQuery(".fl_cbradio_cl").click(function(){
-		jQuery(this).parent().parent().children().eq(3).slideUp();
-	});
-	jQuery(".fl_cbradio_op").click(function(){
-		jQuery(this).parent().parent().children().eq(3).slideDown();
-	});
-   jQuery(".theme_options_content > div:not(:first)").hide();
-   jQuery(".theme_options_tab li").each(function(index){
-       jQuery(this).click(
-	   	  function(){
-			  jQuery(".theme_options_tab li.current").removeClass("current");
-			  jQuery(this).addClass("current");
-			  jQuery(".theme_options_content > div:visible").hide();
-			  jQuery(".theme_options_content > div:eq(" + index + ")").show();
-	  })
-   })
-})
-</script>-->
 
 <div class="wrap rm_wrap">
 <h2><?php echo $themename; ?> 设置</h2>
 <div class="rm_opts">
-<div class="rm_opts">
-<form method="post"> 
+<!-- <div class="rm_opts">
+ --><form method="post"> 
 <?php foreach ($options as $value) {
 switch ( $value['type'] ) {
 case "open":
@@ -320,7 +277,7 @@ case "section":
 $i++;
 ?>
 <div class="rm_section">
-<div class="rm_title"><h3><img src="<?php bloginfo('template_directory')?>/includes/options/clear.png" class="inactive" alt="""><?php echo $value['name']; ?></h3><span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="保存设置" />
+<div class="rm_title"><h3><img src="<?php bloginfo('template_directory')?>/includes/options/clear.png" class="inactive" alt=""/><?php echo $value['name']; ?></h3><span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="保存设置" />
 </span><div class="clearfix"></div></div>
 <div class="rm_options">
 <?php break;

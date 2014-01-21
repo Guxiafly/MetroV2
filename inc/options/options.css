@@ -2,13 +2,11 @@
 	width:740px;
 	}
 .rm_section{
-	border: 1px solid #ddd;
 	height:100%;
 	border-bottom:0;
 	background:#fff;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+    border:1px solid rgb(229, 229, 229);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.04);
 	}
 .rm_opts label{
 	font-size:12px;
@@ -49,6 +47,22 @@
 	line-height:20px;
 	background:#f3f3f3;
 	}
+.rm_opts input[type="submit"]{
+    color: rgb(85, 85, 85);
+    border: 1px solid rgb(204, 204, 204);
+    background: none repeat scroll 0% 0% rgb(247, 247, 247);
+    box-shadow: 0px 1px 0px rgb(255, 255, 255) inset, 0px 1px 0px rgba(0, 0, 0, 0.08);
+    vertical-align: middle;
+    padding:0px 10px 1px;
+    line-height: 26px;
+    height: 28px;
+}
+.rm_opts input[type="submit"]:hover{
+    cursor:pointer;
+    background: none repeat scroll 0% 0% rgb(250, 250, 250);
+    color: rgb(34, 34, 34);
+    border-color: rgb(153, 153, 153);
+}
 .rm_title h3 {
 	cursor:pointer;
 	font-size:14px;
