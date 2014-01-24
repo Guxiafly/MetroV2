@@ -66,7 +66,7 @@ jQuery(document).ready(function () {
         jQuery(newDiv).css({
             "display": "none",
             "position": "absolute",
-            "width": "600",
+            "width": "800",
             "height": "600",
             "overflow": "auto",
             "top": (windowHeight - jQuery(this).height()) / 2 + jQuery(document).scrollTop(),

@@ -277,7 +277,7 @@ case "section":
 $i++;
 ?>
 <div class="rm_section">
-<div class="rm_title"><h3><img src="<?php bloginfo('template_directory')?>/includes/options/clear.png" class="inactive" alt=""/><?php echo $value['name']; ?></h3><span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="保存设置" />
+<div class="rm_title"><h3><img class="inactive" alt=""/><?php echo $value['name']; ?></h3><span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="保存设置" />
 </span><div class="clearfix"></div></div>
 <div class="rm_options">
 <?php break;

@@ -1,6 +1,10 @@
 .rm_wrap{
 	width:740px;
 	}
+.rm_wrap h2{
+    padding-bottom:28px;
+}
+
 .rm_section{
 	height:100%;
 	border-bottom:0;
@@ -76,22 +80,21 @@
 	}
 .rm_title{
 	cursor:pointer;
-	border-bottom:1px solid #ddd;
 	padding:0;
 	height:50px;
 	}
 .rm_title h3 img.inactive{
 	margin:-1px 10px 0 2px;
-	width:19px;
-	height:19px;
-	background:url(collapse.png) no-repeat 0 0;
+	width:24px;
+	height:24px;
+	background:url(collapse.png) no-repeat -37px 0;
 	float:left;
 	}
 .rm_title h3 img.active{
 	margin:-1px 10px 0 2px;
-	width:19px;
-	height:19px;
-	background:url(collapse.png) no-repeat  0 -19px;
+	width:24px;
+	height:24px;
+	background:url(collapse.png) no-repeat 0 0;
 	float:left;
 	}
 .rm_title span.submit{
